@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogsComponent implements OnInit {
 
+  data = {
+    startCoord: 'x, y, z',
+    lastCoord: 'a, b, c',
+    flightTime: '1hr 2min',
+    startTime: '1/Jan/2019 9:00am',
+  };
+
   constructor() { }
 
   ngOnInit() {
