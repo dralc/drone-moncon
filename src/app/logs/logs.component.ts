@@ -7,12 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogsComponent implements OnInit {
 
-  data = {
+  data = [{
+    id: 'civ-drone-abc',
+    status: 'In-flight',
     startCoord: 'x, y, z',
     lastCoord: 'a, b, c',
     flightTime: '1hr 2min',
     startTime: '1/Jan/2019 9:00am',
-  };
+  }, {
+    id: 'mil-drone-abc',
+    status: 'In-flight',
+    startCoord: 'x, y, z',
+    lastCoord: 'a, b, c',
+    flightTime: '1hr 2min',
+    startTime: '1/Jan/2019 9:00am',
+  }];
 
   constructor() { }
 

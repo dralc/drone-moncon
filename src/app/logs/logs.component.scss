@@ -25,3 +25,17 @@ mat-card {
 
 .btn-img { width: 22px; }
 .btn-txt { margin-left: 8px; }
+
+.flex-ctn {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: stretch;
+
+    > * {
+        flex: 1 0 auto;
+        margin: 0 10px;
+    }
+}
