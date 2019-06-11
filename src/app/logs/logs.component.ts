@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subject } from 'rxjs';
 
@@ -7,10 +7,10 @@ import { Subject } from 'rxjs';
   templateUrl: './logs.component.html',
   styleUrls: ['./logs.component.scss']
 })
-export class LogsComponent implements OnInit {
+export class LogsComponent implements OnInit, OnDestroy {
 
-  inputData = '';
   data = new Subject();
+  droneIdQuery = '';
 
   @ViewChild('formSearchById') formSearchById: NgForm;
 
@@ -20,10 +20,13 @@ export class LogsComponent implements OnInit {
   }
 
   onSubmit () {
-    this.data.next( this.getData() );
+    this.droneIdQuery = this.formSearchById.value.droneId;
+    this.data.next( this.getData(this.droneIdQuery) );
   }
 
-  getData () {
+  getData (droneId: String) {
+
+    // TODO create logs service to get data
     return [{
       id: 'civ-drone-abc',
       status: 'In-flight',
@@ -46,6 +49,10 @@ export class LogsComponent implements OnInit {
       flightTime: '1hr 2min',
       startTime: '1/Jan/2019 9:00am',
     }];
+  }
+
+  ngOnDestroy(): void {
+    this.data.unsubscribe();
   }
 
 }

@@ -6,10 +6,11 @@
       ngModel
     />
   </mat-form-field>
-  <input type="submit" value="search">
+
+  <button mat-raised-button>Search</button>
 
   <div class="flex-ctn">
-    <mat-card *ngFor="let item of data | async | filterCollection:formSearchById.value.droneId:'id' ">
+    <mat-card *ngFor="let item of data | async | filterCollection:droneIdQuery:'id' ">
       <mat-card-header>
         <div mat-card-avatar class="avatar"
         [ngClass]="{
