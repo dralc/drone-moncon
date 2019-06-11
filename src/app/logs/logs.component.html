@@ -1,32 +1,40 @@
-<mat-form-field>
-  <input matInput placeholder="drone id">
-</mat-form-field>
+<form (submit) = "onSubmit()" #formSearchById="ngForm">
 
-<div class="flex-ctn">
-  <mat-card *ngFor="let item of data">
-    <mat-card-header>
-      <div mat-card-avatar class="avatar"
-      [ngClass]="{
-        civ: item.id.startsWith('civ-'),
-        mil: item.id.startsWith('mil-'),
-        com: item.id.startsWith('com-')
-      }"></div>
-      <mat-card-title>{{ item.id }}</mat-card-title>
-      <mat-card-subtitle>{{ item.status }}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <table>
-        <tr *ngFor="let item of item | keyvalue">
-          <td>{{ item.key }}</td>
-          <td>{{ item.value }}</td>
-        </tr>
-      </table>
-    </mat-card-content>
-    <mat-card-actions>
-      <mat-button-toggle>
-        <img class="btn-img" src="assets/img/pin.png" alt="pin icon">
-        <span class="btn-txt">pin</span>
-      </mat-button-toggle>
-    </mat-card-actions>
-  </mat-card>
-</div>
+  <mat-form-field>
+    <input matInput placeholder="drone id"
+      name="droneId"
+      ngModel
+    />
+  </mat-form-field>
+  <input type="submit" value="search">
+
+  <div class="flex-ctn">
+    <mat-card *ngFor="let item of data | async | filterCollection:formSearchById.value.droneId:'id' ">
+      <mat-card-header>
+        <div mat-card-avatar class="avatar"
+        [ngClass]="{
+          civ: item.id.startsWith('civ-'),
+          mil: item.id.startsWith('mil-'),
+          com: item.id.startsWith('com-')
+        }"></div>
+        <mat-card-title>{{ item.id }}</mat-card-title>
+        <mat-card-subtitle>{{ item.status }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <table>
+          <tr *ngFor="let item of item | keyvalue">
+            <td>{{ item.key }}</td>
+            <td>{{ item.value }}</td>
+          </tr>
+        </table>
+      </mat-card-content>
+      <mat-card-actions>
+        <mat-button-toggle>
+          <img class="btn-img" src="assets/img/pin.png" alt="pin icon">
+          <span class="btn-txt">pin</span>
+        </mat-button-toggle>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</form>
+
