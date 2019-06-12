@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { LogsService } from './logs.service';
+import { Drone } from '../shared/Drone.model';
 
 @Component({
   selector: 'app-logs',
@@ -9,50 +11,28 @@ import { Subject } from 'rxjs';
 })
 export class LogsComponent implements OnInit, OnDestroy {
 
-  data = new Subject();
+  drones: Drone[];
+  dronesSubs: Subscription;
   droneIdQuery = '';
 
   @ViewChild('formSearchById') formSearchById: NgForm;
 
-  constructor() { }
+  constructor(private logsService: LogsService) { }
 
   ngOnInit() {
+    this.dronesSubs = this.logsService.dronesChanged
+      .subscribe( (drones) => {
+        this.drones = drones;
+      });
   }
 
   onSubmit () {
     this.droneIdQuery = this.formSearchById.value.droneId;
-    this.data.next( this.getData(this.droneIdQuery) );
-  }
-
-  getData (droneId: String) {
-
-    // TODO create logs service to get data
-    return [{
-      id: 'civ-drone-abc',
-      status: 'In-flight',
-      startCoord: 'x, y, z',
-      lastCoord: 'a, b, c',
-      flightTime: '1hr 2min',
-      startTime: '1/Jan/2019 9:00am',
-    }, {
-      id: 'mil-drone',
-      status: 'In-flight',
-      startCoord: 'x, y, z',
-      lastCoord: 'a, b, c',
-      flightTime: '1hr 2min',
-      startTime: '1/Jan/2019 9:00am',
-    }, {
-      id: 'com-drone',
-      status: 'In-flight',
-      startCoord: 'x, y, z',
-      lastCoord: 'a, b, c',
-      flightTime: '1hr 2min',
-      startTime: '1/Jan/2019 9:00am',
-    }];
+    this.logsService.getData(this.droneIdQuery);
   }
 
   ngOnDestroy(): void {
-    this.data.unsubscribe();
+    this.dronesSubs.unsubscribe();
   }
 
 }

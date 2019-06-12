@@ -1,0 +1,26 @@
+[
+    {
+        "id": "civ-drone-1",
+        "status": "In-flight",
+        "startCoord": "x, y, z",
+        "lastCoord": "a, b, c",
+        "flightTime": "1hr 2min",
+        "startTime": "1/Jan/2019 9:00am"
+    },
+    {
+        "id": "com-drone-1",
+        "status": "In-flight",
+        "startCoord": "x, y, z",
+        "lastCoord": "a, b, c",
+        "flightTime": "1hr 2min",
+        "startTime": "1/Jan/2019 9:00am"
+    },
+    {
+        "id": "mil-drone-1",
+        "status": "In-flight",
+        "startCoord": "x, y, z",
+        "lastCoord": "a, b, c",
+        "flightTime": "1hr 2min",
+        "startTime": "1/Jan/2019 9:00am"
+    }
+]

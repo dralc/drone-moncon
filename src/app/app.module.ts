@@ -11,6 +11,7 @@ import { MonitorComponent } from './monitor/monitor.component';
 import { LogsComponent } from './logs/logs.component';
 import { FormsModule } from '@angular/forms';
 import { FilterCollectionPipe } from './shared/filterCollection.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FilterCollectionPipe } from './shared/filterCollection.pipe';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
     MatTabsModule,

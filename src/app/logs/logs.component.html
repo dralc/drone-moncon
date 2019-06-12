@@ -10,7 +10,7 @@
   <button mat-raised-button>Search</button>
 
   <div class="flex-ctn">
-    <mat-card *ngFor="let item of data | async | filterCollection:droneIdQuery:'id' ">
+    <mat-card *ngFor="let item of drones">
       <mat-card-header>
         <div mat-card-avatar class="avatar"
         [ngClass]="{
