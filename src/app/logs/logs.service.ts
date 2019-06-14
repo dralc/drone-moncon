@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Drone } from '../shared/Drone.model';
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,10 +15,11 @@ export class LogsService {
   constructor(private httpClient: HttpClient) { }
 
   getData (droneId: string) {
+    const opts = {
+      params: new HttpParams().set('id', droneId)
+    };
 
-    // TODO create dyn dev/prod search endpoint
-    this.httpClient.get<Drone[]>('http://localhost:5000/drones.json',
-      { params: new HttpParams().set('id', droneId) })
+    this.httpClient.get<Drone[]>( environment.droneSearchEndpoint, opts )
       .pipe(
         map((drones) => {
           // temp filtering client side
