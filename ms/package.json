@@ -1,0 +1,19 @@
+{
+  "name": "ms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "micro-dev": "micro-dev ./$file",
+    "micro": "micro ./$file",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "micro-dev": "^3.0.0"
+  },
+  "dependencies": {
+    "micro": "^9.3.4"
+  }
+}

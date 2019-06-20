@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  droneSearchEndpoint: 'http://localhost:5000/drones.json',
+  droneSearchEndpoint: 'http://localhost:3000/',
 };
 
 /*

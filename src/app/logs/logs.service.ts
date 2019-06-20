@@ -20,12 +20,7 @@ export class LogsService {
     };
 
     this.httpClient.get<Drone[]>( environment.droneSearchEndpoint, opts )
-      .pipe(
-        map((drones) => {
-          // temp filtering client side
-          return drones.filter((drone) => drone.id.indexOf(droneId) !== -1);
-        })
-      ).subscribe((dat) => {
+      .subscribe((dat) => {
         this.dronesChanged.next(dat);
       });
   }
