@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve & cd ./ms && file=drones.js npm run micro-dev",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
